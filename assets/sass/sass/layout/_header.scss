@@ -1,0 +1,80 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+.header {
+
+	display: flex;
+	justify-content: space-between;
+	margin: auto;
+	padding: 3% 6%;
+	background-color: $turquoise;
+	color: white;
+}
+
+@media only screen and (max-width : 480px) {
+       /* Smartphone */
+	.header { flex-direction: column; }
+}
+@media only screen and (max-width : 650px) and (min-width : 481px) {
+       /* Tablet  */
+	.header { padding: 1% 8%; }
+}
+@media only screen and (max-width : 1050px) and (min-width : 651px) {
+       /* Small desktop*/
+     .header { padding: 1% 18%; }
+}
+@media only screen and (min-width : 1051px) {
+       /* Medium desktop */
+    .header { padding: 1% 20%; }
+}
+
+.search-input {
+	margin: auto;
+    position: relative;
+    padding: 1rem 0 0.5rem 0;
+    height: 4.5rem;
+    width: 22.5rem;
+    display: flex;
+}
+
+.search-input input {
+    border: none;
+    border-bottom: 1px solid white;
+    display: block;
+    font-size: 1rem;
+    line-height: 1rem;
+    margin: 0;
+    padding: 0.5rem 0;
+    width: 100%;
+    text-align: left; 
+    background-color: transparent;
+}
+
+.search-input input:focus {
+    outline: none;
+}
+
+.search-input label {
+    position: absolute;
+    left: 0;
+    top: 1.625rem;
+    width: 100%;
+    font-weight: normal;
+    pointer-events: none;
+    @include transition(0.2s ease all);
+}
+
+.search-input input:focus ~ label {
+    top: 0;
+    font-size: 0.75rem;
+}
+
+.search-input label.not-empty {
+    top: 0;
+    font-size: 0.75rem;
+}
+.search-icon {
+    position: absolute;
+    right: 0;
+    top: 1.625rem;
+}

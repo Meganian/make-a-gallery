@@ -1,0 +1,85 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the form component.
+// -----------------------------------------------------------------------------
+
+.legend {
+    display: block;
+  	margin-top: 20px;
+  	font-weight: bold;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"] + label::before {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    @include border-radius(50%);
+    border: 1px solid #333;
+    margin-right: 10px;
+    margin-top: 5px;
+    background-color: $turquoise;
+    box-shadow: 0 0 0 8px #fff inset;
+    @include transition(box-shadow 0.5s ease);
+}
+
+input[type="radio"]:checked + label::before {
+    box-shadow: 0 0 0 2px #fff inset;
+}
+
+input[type="radio"] + label {
+    margin-right: 15px;
+    &:hover, &:focus, &:active {
+      color: #34495E;
+    }
+    &:hover::before, &:focus::before, &:active::before {
+      border: 1px solid #34495E;
+    }
+}
+
+.sort {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+.input-file-container {
+    position: relative;
+    margin: auto 20px;
+    width: 225px;
+} 
+
+.input-file-trigger {
+    display: block;
+    padding: 14px 45px;
+    background: #39D2B4;
+    @include transition(all .4s);
+    cursor: pointer;
+}
+
+input[type="file"] {
+    position: absolute;
+    top: 0; left: 0;
+    width: 225px;
+    opacity: 0;
+    padding: 14px 0;
+    cursor: pointer;
+}
+
+input[type="file"]:hover + .input-file-trigger,
+.file-trigger:hover {
+    background: #34495E;
+    color: #39D2B4;
+}
+
+@media only screen and (max-width : 480px) {
+       /* Smartphone */
+    .input-file-container { margin: auto ; } 
+}
+
+@media only screen and (min-width : 1026px) {
+       /* Desktop */
+    .sort { display: block; }
+}

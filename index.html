@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Gallery</title>
+    <meta name="keywords" content='gallery' />
+    <meta name="description" content='Zapraszamy do kontaktu ☎ 604 287 876 ☎'>
+    <meta name="author" content="Magdalena Górna">
+
+    <link rel="shortcut icon" type="image/x-icon" href="img/magic-websites.png">
+    <link href="assets/sass/stylesheets/main.css" rel="stylesheet">
+
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/sass/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/sass/ie8.css" /><![endif]-->
+
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+  </head>
+  <body>
+
+      <header class="header">
+
+        <div class="input-file-container">  
+          <input class="file" id="file" type="file" accept="image/*" webkitdirectory multiple>
+          <label tabindex="0" for="file" class="input-file-trigger">Select a picture...</label>
+        </div>
+
+        <div class="sort">
+          <span class="legend">Sort photos by...</span>
+          <input type="radio" name="sort" id="name" value="name" data-helper='name'>
+          <label for="name" >Name</label> 
+          <input type="radio" name="sort" id="size" value="size" data-helper='size'>
+          <label for="size">Size</label> 
+          <input type="radio" name="sort" id="width" value="width" data-helper='width'>
+          <label for="width">Width</label> 
+          <input type="radio" name="sort" id="height" value="height" data-helper='height'>
+          <label for="height">Height</label>
+        </div><!-- /.sort --> 
+    
+        <div class="search-input">
+          <input id="mysearch" type="search"/>
+          <label>Search photo</label>
+            <div class="icon">
+              <svg version="1.1" class="search-icon" x="0px" y="0px"
+                 width="18px" height="15px" viewBox="291.001 304.503 30 30" enable-background="new 291.001 304.503 30 30" xml:space="preserve">
+                <path fill="#FFFFFF" d="M320.542,331.83l-7.246-7.246c3.788-4.882,3.446-11.953-1.035-16.434c-2.353-2.353-5.48-3.648-8.807-3.648
+                c-3.327,0-6.454,1.295-8.806,3.648c-2.353,2.352-3.648,5.48-3.648,8.807c0,3.327,1.295,6.455,3.648,8.807
+                c2.353,2.352,5.48,3.648,8.807,3.648c2.799,0,5.454-0.92,7.629-2.612l7.245,7.245c0.305,0.306,0.706,0.458,1.107,0.458
+                c0.4,0,0.801-0.153,1.107-0.458C321.154,333.433,321.154,332.442,320.542,331.83z M296.863,323.55
+                c-1.761-1.761-2.731-4.102-2.731-6.592c0-2.491,0.97-4.831,2.732-6.593c1.761-1.761,4.102-2.731,6.592-2.731
+                c2.49,0,4.831,0.97,6.593,2.731c3.635,3.634,3.635,9.549,0,13.184c-1.761,1.761-4.103,2.731-6.593,2.731
+                C300.965,326.28,298.624,325.31,296.863,323.55z"/>
+              </svg><!-- /.search-icon -->  
+            </div><!-- /.search-btn -->
+        </div>
+      
+      </header>
+
+      <section>
+        <h1>Gallery</h1>
+        <ul id="gallery" class="photo-gallery">
+          
+        </ul>
+        
+
+        <div class="lightbox">
+          <div class="top">
+            <div id="close" class="close">X</div>
+          </div>
+          <div class="middle"></div>
+        </div>
+
+        <div id="folder-name" class="folder-name"></div>
+
+      </section>
+
+
+    <script src="assets/js/jquery-3.2.1.js"></script>
+    <script>
+      "use strict";
+
+      if (window.FileReader) {
+        // Success! 
+        } else {
+        alert('The File API is not fully supported in this browser.');
+      }
+
+      function handleFileData(e) {
+
+        var dataFile = e.target.files;
+        
+        for (var i = 0, f; f = dataFile[i]; i++) {
+
+          var reader = new FileReader();
+
+          reader.onload = (function(theFile) {
+
+            return function(e) {
+              var li = document.createElement('li');
+              li.setAttribute('class', 'gallery-photo box');
+              var box = document.createElement('div');
+              box.setAttribute('class', 'box-inner');
+              li.append(box);
+              box.innerHTML = ['<img src="'+e.target.result+'" data-name='+theFile.name+' data-size='+theFile.size+' />'].join('');
+              console.log(e.target);
+              document.getElementById('gallery').insertBefore(li , null);  
+              photoEvent();          
+            }
+
+          })(f);
+          
+          reader.readAsDataURL(f);
+        }
+        getFolderName(dataFile);
+      }
+
+      function getFolderName(dataFile){
+        var span = document.createElement('div');
+        var folderName = (dataFile[0].webkitRelativePath).split('/', 1);
+        span.innerHTML = 'Nazwa Folderu: ' + folderName; 
+        document.getElementById('folder-name').insertBefore(span , null);
+      };
+
+
+//------------------------------- iightbox ----------------------------------//
+
+      function openContent() {
+        $(".lightbox").fadeIn(300);
+        $('.middle').css("background-image", "url(" + $(this).attr("src") + ")");
+        $("html").css("overflow","hidden");
+      }
+
+      $(".close, .lightbox").on('click', function(){
+        $(".lightbox").fadeOut(300);
+        setTimeout(function() {
+          $("h1").remove();
+          $("html").css("overflow","auto");
+        }, 300);
+      });
+
+      function photoEvent() {
+        
+        var photoGrasp = document.querySelectorAll('.box-inner img');
+        photoGrasp.forEach(function(item) {
+          item.addEventListener('click', openContent ,false);
+        });
+      }
+      
+      document.getElementById('file').addEventListener('change', handleFileData, false);
+
+
+//------------------------------- search ----------------------------------//
+
+   $('#mysearch').on('keyup', function() {
+        var $rows = $('.box-inner img');
+
+     
+        var val = '^(?=.*\\b' + $.trim($(this).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',
+            reg = RegExp(val, 'i'),
+            text;
+            
+        $rows.show().filter(function() {
+          text = $(this).attr('data-name').replace(/\s+/g, ' ');
+          return !reg.test(text);
+        }).hide();
+      });
+
+//------------------------------- sort ----------------------------------//
+
+      $('#name').on('change', function() {
+
+        var items = $('.box-inner').find('img');
+        var photoGallery = $('#gallery');
+
+        items.sort(function(a, b) {
+          if ($(a).attr("data-name") < $(b).attr("data-name"))
+            return -1
+          if ( $(a).attr("data-name") > $(b).attr("data-name"))
+            return 1
+          return 0
+        });
+        
+        for ( var i = 0; i < items.length; i++ ) {
+          photoGallery.append($(items[i]).closest("li"));
+        }
+        
+      });
+
+
+
+      $('input[name]').on('change', function() {
+        var radioValue = $(this).val();
+        var items = $('.box-inner').find('img');
+        var photoGallery = $('#gallery');
+
+        items.sort(function(a, b) {
+          if(radioValue=='size') {
+            return parseInt($(a).attr("data-size")) - parseInt($(b).attr("data-size"));
+          } else {
+            return a.radioValue - b.radioValue;
+          }
+          
+        });
+        
+        for ( var i = 0; i < items.length; i++ ) {
+          photoGallery.append($(items[i]).closest("li"));
+        };
+
+        
+      })
+
+
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,627 @@
+/* line 5, ../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+/* line 6, ../sass/vendor/_reset.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+/* line 27, ../sass/vendor/_reset.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 31, ../sass/vendor/_reset.scss */
+body {
+  line-height: 1;
+}
+
+/* line 34, ../sass/vendor/_reset.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 37, ../sass/vendor/_reset.scss */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 40, ../sass/vendor/_reset.scss */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* line 45, ../sass/vendor/_reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 49, ../sass/vendor/_reset.scss */
+a img {
+  border: none;
+}
+
+/**
+ * Set up a decent box model on the root element
+ */
+/* line 8, ../sass/base/_base.scss */
+html {
+  box-sizing: border-box;
+}
+
+/**
+ * Make all elements from the DOM inherit from the parent box-sizing
+ * Since `*` has a specificity of 0, it does not override the `html` value
+ * making all elements inheriting from the root box-sizing value
+ * See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+ */
+/* line 18, ../sass/base/_base.scss */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/**
+ * Basic styles for links
+ */
+/* line 27, ../sass/base/_base.scss */
+a {
+  color: #e50050;
+  text-decoration: none;
+}
+/* line 18, ../sass/abstracts/_mixins.scss */
+a:hover, a:active, a:focus {
+  color: #222222;
+  text-decoration: underline;
+}
+
+/**
+ * Basic typography style for copy text
+ */
+/* line 4, ../sass/base/_typography.scss */
+html {
+  font-size: 62.5%;
+}
+
+/* line 8, ../sass/base/_typography.scss */
+body {
+  color: #222222;
+  font: normal 125%/1.4 "Open Sans", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  font-weight: 300;
+}
+
+/* line 16, ../sass/base/_typography.scss */
+h1 {
+  font-size: 36px;
+  line-height: 44px;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+/* line 23, ../sass/base/_typography.scss */
+li {
+  display: inline-block;
+  text-decoration: none;
+  margin: 20px;
+}
+
+/**
+ * Clear inner floats
+ */
+/* line 8, ../sass/base/_helpers.scss */
+.clearfix::after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+/**
+ * Main content containers
+ * 1. Make the container full-width with a maximum width
+ * 2. Center it in the viewport
+ * 3. Leave some space on the edges, especially valuable on small screens
+ */
+/* line 20, ../sass/base/_helpers.scss */
+.container {
+  max-width: 1180px;
+  /* 1 */
+  margin-left: auto;
+  /* 2 */
+  margin-right: auto;
+  /* 2 */
+  padding-left: 20px;
+  /* 3 */
+  padding-right: 20px;
+  /* 3 */
+  width: 100%;
+  /* 1 */
+}
+
+/**
+ * Hide text while making it readable for screen readers
+ * 1. Needed in WebKit-based browsers because of an implementation bug;
+ *    See: https://code.google.com/p/chromium/issues/detail?id=457146
+ */
+/* line 34, ../sass/base/_helpers.scss */
+.hide-text {
+  overflow: hidden;
+  padding: 0;
+  /* 1 */
+  text-indent: 101%;
+  white-space: nowrap;
+}
+
+/**
+ * Hide element while making it readable for screen readers
+ * Shamelessly borrowed from HTML5Boilerplate:
+ * https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
+ */
+/* line 46, ../sass/base/_helpers.scss */
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/* line 4, ../sass/layout/_header.scss */
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  padding: 3% 6%;
+  background-color: #1abc9c;
+  color: white;
+}
+
+@media only screen and (max-width: 480px) {
+  /* Smartphone */
+  /* line 16, ../sass/layout/_header.scss */
+  .header {
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 650px) and (min-width: 481px) {
+  /* Tablet  */
+  /* line 20, ../sass/layout/_header.scss */
+  .header {
+    padding: 1% 8%;
+  }
+}
+@media only screen and (max-width: 1050px) and (min-width: 651px) {
+  /* Small desktop*/
+  /* line 24, ../sass/layout/_header.scss */
+  .header {
+    padding: 1% 18%;
+  }
+}
+@media only screen and (min-width: 1051px) {
+  /* Medium desktop */
+  /* line 28, ../sass/layout/_header.scss */
+  .header {
+    padding: 1% 20%;
+  }
+}
+/* line 31, ../sass/layout/_header.scss */
+.search-input {
+  margin: auto;
+  position: relative;
+  padding: 1rem 0 0.5rem 0;
+  height: 4.5rem;
+  width: 22.5rem;
+  display: flex;
+}
+
+/* line 40, ../sass/layout/_header.scss */
+.search-input input {
+  border: none;
+  border-bottom: 1px solid white;
+  display: block;
+  font-size: 1rem;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0.5rem 0;
+  width: 100%;
+  text-align: left;
+  background-color: transparent;
+}
+
+/* line 53, ../sass/layout/_header.scss */
+.search-input input:focus {
+  outline: none;
+}
+
+/* line 57, ../sass/layout/_header.scss */
+.search-input label {
+  position: absolute;
+  left: 0;
+  top: 1.625rem;
+  width: 100%;
+  font-weight: normal;
+  pointer-events: none;
+  -moz-transition: ease 0.2s all;
+  -o-transition: ease 0.2s all;
+  -webkit-transition: ease 0.2s all;
+  transition: ease 0.2s all;
+}
+
+/* line 67, ../sass/layout/_header.scss */
+.search-input input:focus ~ label {
+  top: 0;
+  font-size: 0.75rem;
+}
+
+/* line 72, ../sass/layout/_header.scss */
+.search-input label.not-empty {
+  top: 0;
+  font-size: 0.75rem;
+}
+
+/* line 76, ../sass/layout/_header.scss */
+.search-icon {
+  position: absolute;
+  right: 0;
+  top: 1.625rem;
+}
+
+/* line 5, ../sass/components/_button.scss */
+.btn {
+  padding: 16px;
+  background-color: #e74c48;
+  background: linear-gradient(to bottom, #eb6f6d, #e74f4b);
+  font-size: 2.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: white;
+  cursor: pointer;
+  transition: all .5s;
+  border: 1px solid #9e8788;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+/* line 18, ../sass/components/_button.scss */
+.btn:active {
+  background: linear-gradient(to bottom, #e74f4b, #eb6f6d);
+}
+
+/* line 5, ../sass/components/_form.scss */
+.legend {
+  display: block;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+/* line 11, ../sass/components/_form.scss */
+input[type="radio"] {
+  display: none;
+}
+
+/* line 15, ../sass/components/_form.scss */
+input[type="radio"] + label::before {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  border: 1px solid #333;
+  margin-right: 10px;
+  margin-top: 5px;
+  background-color: #1abc9c;
+  box-shadow: 0 0 0 8px #fff inset;
+  -moz-transition: box-shadow 0.5s ease;
+  -o-transition: box-shadow 0.5s ease;
+  -webkit-transition: box-shadow 0.5s ease;
+  transition: box-shadow 0.5s ease;
+}
+
+/* line 29, ../sass/components/_form.scss */
+input[type="radio"]:checked + label::before {
+  box-shadow: 0 0 0 2px #fff inset;
+}
+
+/* line 33, ../sass/components/_form.scss */
+input[type="radio"] + label {
+  margin-right: 15px;
+}
+/* line 35, ../sass/components/_form.scss */
+input[type="radio"] + label:hover, input[type="radio"] + label:focus, input[type="radio"] + label:active {
+  color: #34495E;
+}
+/* line 38, ../sass/components/_form.scss */
+input[type="radio"] + label:hover::before, input[type="radio"] + label:focus::before, input[type="radio"] + label:active::before {
+  border: 1px solid #34495E;
+}
+
+/* line 43, ../sass/components/_form.scss */
+.sort {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+/* line 48, ../sass/components/_form.scss */
+.input-file-container {
+  position: relative;
+  margin: auto 20px;
+  width: 225px;
+}
+
+/* line 54, ../sass/components/_form.scss */
+.input-file-trigger {
+  display: block;
+  padding: 14px 45px;
+  background: #39D2B4;
+  -moz-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+/* line 62, ../sass/components/_form.scss */
+input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 225px;
+  opacity: 0;
+  padding: 14px 0;
+  cursor: pointer;
+}
+
+/* line 71, ../sass/components/_form.scss */
+input[type="file"]:hover + .input-file-trigger,
+.file-trigger:hover {
+  background: #34495E;
+  color: #39D2B4;
+}
+
+@media only screen and (max-width: 480px) {
+  /* Smartphone */
+  /* line 79, ../sass/components/_form.scss */
+  .input-file-container {
+    margin: auto;
+  }
+}
+@media only screen and (min-width: 1026px) {
+  /* Desktop */
+  /* line 84, ../sass/components/_form.scss */
+  .sort {
+    display: block;
+  }
+}
+/* line 5, ../sass/components/_gallery.scss */
+.photo-gallery {
+  margin: auto;
+  height: -webkit-fill-available;
+  padding: 1% 8%;
+}
+
+/* line 12, ../sass/components/_gallery.scss */
+.gallery-photo img {
+  cursor: pointer;
+  transition: all 2s, transform .5s, box-shadow .5s;
+}
+/* line 15, ../sass/components/_gallery.scss */
+.gallery-photo img:hover {
+  box-shadow: 6px 6px 20px;
+}
+
+/* line 22, ../sass/components/_gallery.scss */
+.folder-name {
+  text-align: center;
+}
+
+/* line 26, ../sass/components/_gallery.scss */
+.box {
+  float: left;
+  position: relative;
+  margin: auto;
+  width: 20%;
+  padding-bottom: 16%;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+/* line 33, ../sass/components/_gallery.scss */
+.box:hover {
+  transform: scale(1.02);
+}
+/* line 36, ../sass/components/_gallery.scss */
+.box:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* line 43, ../sass/components/_gallery.scss */
+.box-inner {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  top: 10px;
+  bottom: 10px;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+/* line 49, ../sass/components/_gallery.scss */
+.box-inner img {
+  width: 100%;
+}
+
+@media only screen and (max-width: 480px) {
+  /* Smartphone view: 1 tile */
+  /* line 56, ../sass/components/_gallery.scss */
+  .box {
+    width: 100%;
+    padding-bottom: 100%;
+  }
+}
+@media only screen and (max-width: 650px) and (min-width: 481px) {
+  /* Tablet view: 2 tiles */
+  /* line 63, ../sass/components/_gallery.scss */
+  .box {
+    width: 50%;
+    padding-bottom: 50%;
+  }
+}
+@media only screen and (max-width: 1050px) and (min-width: 651px) {
+  /* Small desktop / ipad view: 3 tiles */
+  /* line 70, ../sass/components/_gallery.scss */
+  .box {
+    width: 33.3%;
+    padding-bottom: 33.3%;
+  }
+}
+@media only screen and (max-width: 1290px) and (min-width: 1051px) {
+  /* Medium desktop: 4 tiles */
+  /* line 77, ../sass/components/_gallery.scss */
+  .box {
+    width: 25%;
+    padding-bottom: 25%;
+  }
+}
+/* line 86, ../sass/components/_gallery.scss */
+.lightbox {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  display: none;
+  background: rgba(0, 0, 0, 0.9);
+}
+
+/* line 95, ../sass/components/_gallery.scss */
+.lightbox .top {
+  position: relative;
+  width: 100%;
+  padding: 20px 0;
+}
+
+/* line 101, ../sass/components/_gallery.scss */
+.lightbox .top .close {
+  position: absolute;
+  height: 100%;
+  top: 30px;
+  right: 30px;
+  color: white;
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+/* line 111, ../sass/components/_gallery.scss */
+.lightbox .top .close:hover {
+  cursor: pointer;
+  color: #1abc9c;
+}
+
+/* line 116, ../sass/components/_gallery.scss */
+.lightbox .middle {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 153px);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}

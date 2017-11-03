@@ -1,0 +1,28 @@
+/**
+ * Basic typography style for copy text
+ */
+html {
+  	font-size: 62.5%; 
+}
+
+body {
+  	color: $text-color;
+  	font: normal 125% / 1.4 $text-font-stack;
+	font-size: 1.5rem;
+	line-height: 1.5rem;
+	font-weight: 300;
+}
+
+h1 {
+    font-size: 36px;
+    line-height: 44px;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+li {
+    display: inline-block;
+    text-decoration: none;
+    margin: 20px;
+}
+
