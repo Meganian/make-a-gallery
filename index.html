@@ -41,38 +41,32 @@
         <div class="search-input">
           <input id="mysearch" type="search"/>
           <label>Search photo</label>
-            <div class="icon">
-              <svg version="1.1" class="search-icon" x="0px" y="0px"
-                 width="18px" height="15px" viewBox="291.001 304.503 30 30" enable-background="new 291.001 304.503 30 30" xml:space="preserve">
-                <path fill="#FFFFFF" d="M320.542,331.83l-7.246-7.246c3.788-4.882,3.446-11.953-1.035-16.434c-2.353-2.353-5.48-3.648-8.807-3.648
-                c-3.327,0-6.454,1.295-8.806,3.648c-2.353,2.352-3.648,5.48-3.648,8.807c0,3.327,1.295,6.455,3.648,8.807
-                c2.353,2.352,5.48,3.648,8.807,3.648c2.799,0,5.454-0.92,7.629-2.612l7.245,7.245c0.305,0.306,0.706,0.458,1.107,0.458
-                c0.4,0,0.801-0.153,1.107-0.458C321.154,333.433,321.154,332.442,320.542,331.83z M296.863,323.55
-                c-1.761-1.761-2.731-4.102-2.731-6.592c0-2.491,0.97-4.831,2.732-6.593c1.761-1.761,4.102-2.731,6.592-2.731
-                c2.49,0,4.831,0.97,6.593,2.731c3.635,3.634,3.635,9.549,0,13.184c-1.761,1.761-4.103,2.731-6.593,2.731
-                C300.965,326.28,298.624,325.31,296.863,323.55z"/>
-              </svg><!-- /.search-icon -->  
-            </div><!-- /.search-btn -->
+          <div class="icon">
+            <svg version="1.1" class="search-icon" x="0px" y="0px"
+              width="18px" height="15px" viewBox="291.001 304.503 30 30" enable-background="new 291.001 304.503 30 30" xml:space="preserve">
+            <path fill="#FFFFFF" d="M320.542,331.83l-7.246-7.246c3.788-4.882,3.446-11.953-1.035-16.434c-2.353-2.353-5.48-3.648-8.807-3.648
+              c-3.327,0-6.454,1.295-8.806,3.648c-2.353,2.352-3.648,5.48-3.648,8.807c0,3.327,1.295,6.455,3.648,8.807
+              c2.353,2.352,5.48,3.648,8.807,3.648c2.799,0,5.454-0.92,7.629-2.612l7.245,7.245c0.305,0.306,0.706,0.458,1.107,0.458
+              c0.4,0,0.801-0.153,1.107-0.458C321.154,333.433,321.154,332.442,320.542,331.83z M296.863,323.55
+              c-1.761-1.761-2.731-4.102-2.731-6.592c0-2.491,0.97-4.831,2.732-6.593c1.761-1.761,4.102-2.731,6.592-2.731
+              c2.49,0,4.831,0.97,6.593,2.731c3.635,3.634,3.635,9.549,0,13.184c-1.761,1.761-4.103,2.731-6.593,2.731
+              C300.965,326.28,298.624,325.31,296.863,323.55z"/>
+            </svg><!-- /.search-icon -->  
+          </div><!-- /.search-btn -->
         </div>
       
       </header>
 
       <section>
         <h1>Gallery</h1>
-        <ul id="gallery" class="photo-gallery">
-          
-        </ul>
-        
-
+        <ul id="gallery" class="photo-gallery"></ul>
         <div class="lightbox">
           <div class="top">
             <div id="close" class="close">X</div>
           </div>
           <div class="middle"></div>
         </div>
-
         <div id="folder-name" class="folder-name"></div>
-
       </section>
 
 
@@ -105,7 +99,7 @@
               box.setAttribute('class', 'box-inner');
               li.append(box);
               box.innerHTML = ['<img src="'+e.target.result+'" data-name='+theFile.name+' data-size='+theFile.size+' />'].join('');
-              console.log(e.target);
+              console.log(theFile);
               document.getElementById('gallery').insertBefore(li , null);  
               photoEvent();          
             }
@@ -118,14 +112,14 @@
       }
 
       function getFolderName(dataFile){
-        var span = document.createElement('div');
+        var div = document.createElement('div');
         var folderName = (dataFile[0].webkitRelativePath).split('/', 1);
-        span.innerHTML = 'Nazwa Folderu: ' + folderName; 
-        document.getElementById('folder-name').insertBefore(span , null);
+        div.innerHTML = 'Nazwa Folderu: ' + folderName; 
+        document.getElementById('folder-name').insertBefore(div , null);
       };
 
 
-//------------------------------- iightbox ----------------------------------//
+//------------------------------- lightbox ----------------------------------//
 
       function openContent() {
         $(".lightbox").fadeIn(300);
@@ -136,28 +130,44 @@
       $(".close, .lightbox").on('click', function(){
         $(".lightbox").fadeOut(300);
         setTimeout(function() {
-          $("h1").remove();
           $("html").css("overflow","auto");
         }, 300);
       });
 
       function photoEvent() {
         
-        var photoGrasp = document.querySelectorAll('.box-inner img');
-        photoGrasp.forEach(function(item) {
-          item.addEventListener('click', openContent ,false);
-        });
+        document.querySelectorAll('.box-inner img').forEach(item => item.addEventListener('click', openContent ));
       }
       
-      document.getElementById('file').addEventListener('change', handleFileData, false);
+      
 
 
 //------------------------------- search ----------------------------------//
+      
+  
+      function match(reg, photos) {
 
-   $('#mysearch').on('keyup', function() {
+      Array.from(photos).filter(photo => {
+        const data = photo.dataset.name;
+        return console.log(data.includes(reg));
+       });
+
+      }
+
+      function search() {
         var $rows = $('.box-inner img');
+       // let photos = document.querySelectorAll('.box-inner img');
+        //const sortedItems = match(this.value, photos);
+       // const rio = Array.from(photos).reduce(sortedItems);
+      //console.log(sortedItems);
+       const $thisValue = this.value;
 
-     
+
+        /*$rows.map( photo => {
+          const exp = new RegExp(this.value,'gi');
+          console.log(exp, photo );
+          return photo.attr('data-name').match(exp);
+        });*/
         var val = '^(?=.*\\b' + $.trim($(this).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',
             reg = RegExp(val, 'i'),
             text;
@@ -166,53 +176,35 @@
           text = $(this).attr('data-name').replace(/\s+/g, ' ');
           return !reg.test(text);
         }).hide();
-      });
+      };
 
 //------------------------------- sort ----------------------------------//
 
-      $('#name').on('change', function() {
+      function sort() {
+        const radioValue = $(this).val();
+        const items = $('.box-inner').find('img');
+        const photoGallery = $('#gallery');
 
-        var items = $('.box-inner').find('img');
-        var photoGallery = $('#gallery');
-
-        items.sort(function(a, b) {
-          if ($(a).attr("data-name") < $(b).attr("data-name"))
-            return -1
-          if ( $(a).attr("data-name") > $(b).attr("data-name"))
-            return 1
-          return 0
-        });
-        
-        for ( var i = 0; i < items.length; i++ ) {
-          photoGallery.append($(items[i]).closest("li"));
+        if(radioValue == 'width') {
+          items.sort((a,b) => ($(a)[0].clientWidtht) < ($(b)[0].clientWidth) ? 1 : -1 );
         }
-        
-      });
-
-
-
-      $('input[name]').on('change', function() {
-        var radioValue = $(this).val();
-        var items = $('.box-inner').find('img');
-        var photoGallery = $('#gallery');
-
-        items.sort(function(a, b) {
-          if(radioValue=='size') {
-            return parseInt($(a).attr("data-size")) - parseInt($(b).attr("data-size"));
-          } else {
-            return a.radioValue - b.radioValue;
+          else if(radioValue == 'height') {
+            items.sort((a,b) => ($(a)[0].clientHeight) < ($(b)[0].clientHeight) ? 1 : -1 );
           }
-          
-        });
-        
-        for ( var i = 0; i < items.length; i++ ) {
-          photoGallery.append($(items[i]).closest("li"));
-        };
+            else {
+              items
+                .sort((a,b) => ($(a).attr("data-"+radioValue) < $(b).attr("data-"+radioValue)) ? 1 : -1 );
+            }
 
+        items.map(item => photoGallery.append($(items[item]).closest("li")) );
         
-      })
+      };
 
+      document.getElementById('file').addEventListener('change', handleFileData);
+      document.getElementById('mysearch').addEventListener('keyup', search);
+      document.querySelectorAll('input[name]').forEach(item => item.addEventListener('change', sort));
     });
+      
 
     </script>
   </body>
