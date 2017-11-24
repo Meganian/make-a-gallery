@@ -73,7 +73,7 @@
     <script src="assets/js/jquery-3.2.1.js"></script>
     <script>
       "use strict";
-      $(document).ready(function(){
+      (function(){
 
 
       if (window.FileReader) {
@@ -156,7 +156,7 @@
 
       function search() {
         var $rows = $('.box-inner img');
-       // let photos = document.querySelectorAll('.box-inner img');
+       // const photos = document.querySelectorAll('.box-inner img');
         //const sortedItems = match(this.value, photos);
        // const rio = Array.from(photos).reduce(sortedItems);
       //console.log(sortedItems);
@@ -200,10 +200,11 @@
         
       };
 
+
       document.getElementById('file').addEventListener('change', handleFileData);
       document.getElementById('mysearch').addEventListener('keyup', search);
       document.querySelectorAll('input[name]').forEach(item => item.addEventListener('change', sort));
-    });
+    })();
       
 
     </script>
